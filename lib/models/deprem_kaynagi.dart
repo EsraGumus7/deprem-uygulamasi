@@ -1,0 +1,6 @@
+enum DepremKaynagi {
+  kandilli,
+  afad,
+}
+
+
