@@ -2,11 +2,22 @@
 
 Türkiye'deki depremleri gerçek zamanlı takip eden, Flutter ile geliştirilmiş mobil uygulama. Kandilli Rasathanesi ve AFAD verilerini kullanarak kullanıcılara anlık deprem bilgileri sunar.
 
+## 📸 Ekran Görüntüleri
+
+<div align="center">
+  <img src="screenshots/deprem1.jpeg" alt="Deprem Listesi - Ana Ekran" width="250"/>
+  <img src="screenshots/deprem2.jpeg" alt="Deprem Kartları" width="250"/>
+  <br/>
+  <img src="screenshots/deprem3.jpeg" alt="Harita Görünümü" width="250"/>
+  <img src="screenshots/deprem4.jpeg" alt="Ayarlar ve Filtreleme" width="250"/>
+</div>
+
 ## 📱 Özellikler
 
 ### 🔄 Gerçek Zamanlı Veri Takibi
 - **Çift Kaynak Desteği**: Kandilli Rasathanesi ve AFAD verilerini aynı anda takip eder
-- **Otomatik Güncelleme**: Periyodik kontrol sistemi ile her 2 dakikada bir otomatik veri güncellemesi
+- **Otomatik Güncelleme**: Periyodik kontrol sistemi ile her 1 dakikada bir otomatik veri güncellemesi (ayarlanabilir)
+- **Uygulama Açılışında Güncelleme**: Uygulama açıldığında veya ön plana geldiğinde otomatik veri yenileme
 - **Manuel Yenileme**: Pull-to-refresh özelliği ile anında veri güncelleme
 - **Yeni Deprem Bildirimi**: Yeni depremler eklendiğinde görsel bildirim gösterimi
 
