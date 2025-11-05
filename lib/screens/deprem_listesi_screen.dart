@@ -31,7 +31,7 @@ class DepremListesiScreen extends StatefulWidget {
 }
 
 class _DepremListesiScreenState extends State<DepremListesiScreen>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, WidgetsBindingObserver {
   late TabController _tabController;
 
   @override
@@ -40,11 +40,24 @@ class _DepremListesiScreenState extends State<DepremListesiScreen>
     _tabController = TabController(length: 2, vsync: this);
     _tabController.addListener(_handleTabChange);
     
+    // Lifecycle observer'ı ekle
+    WidgetsBinding.instance.addObserver(this);
+    
     // Provider'ı başlat (ilk verileri yükle)
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final provider = Provider.of<DepremProvider>(context, listen: false);
       provider.initialize();
     });
+  }
+  
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    if (state == AppLifecycleState.resumed) {
+      // Uygulama foreground'a geldiğinde otomatik refresh
+      final provider = Provider.of<DepremProvider>(context, listen: false);
+      provider.onAppResumed();
+    }
   }
 
   void _handleTabChange() {
@@ -59,6 +72,7 @@ class _DepremListesiScreenState extends State<DepremListesiScreen>
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _tabController.removeListener(_handleTabChange);
     _tabController.dispose();
     super.dispose();

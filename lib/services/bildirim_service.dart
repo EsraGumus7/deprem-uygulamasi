@@ -78,7 +78,7 @@ class BildirimService {
   // Kontrol aralığını al (dakika cinsinden)
   static Future<int> getKontrolAraligi() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getInt(_kontrolAraligiKey) ?? 2; // Varsayılan 2 dakika
+    return prefs.getInt(_kontrolAraligiKey) ?? 1; // Varsayılan 1 dakika (daha hızlı güncelleme)
   }
 
   // Kontrol aralığını kaydet

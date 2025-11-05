@@ -234,14 +234,25 @@ class DepremProvider with ChangeNotifier {
     _baslatPeriyodikKontrol();
   }
   
+  // Uygulama foreground'a geldiğinde çağrılır (hızlı güncelleme için)
+  Future<void> onAppResumed() async {
+    _log('Uygulama foreground\'a geldi, veriler yenileniyor...');
+    // Bildirim göndermeden hızlı refresh
+    await refresh();
+  }
+  
   // Periyodik kontrolü başlat
   Future<void> _baslatPeriyodikKontrol() async {
     _periyodikTimer?.cancel();
     final kontrolAraligi = await BildirimService.getKontrolAraligi();
-    _log('Periyodik kontrol başlatılıyor: $kontrolAraligi dakika');
+    // Minimum 30 saniye, maksimum kontrol aralığı kadar
+    final timerAraligi = Duration(
+      seconds: kontrolAraligi < 1 ? 30 : (kontrolAraligi * 60).clamp(30, 600),
+    );
+    _log('Periyodik kontrol başlatılıyor: ${timerAraligi.inSeconds} saniye');
     
     _periyodikTimer = Timer.periodic(
-      Duration(minutes: kontrolAraligi),
+      timerAraligi,
       (timer) async {
         _log('Periyodik kontrol çalışıyor...');
         await periyodikKontrolRefresh(); // Bildirim gönderen özel refresh
