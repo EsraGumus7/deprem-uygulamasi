@@ -17,7 +17,9 @@ class DepremService {
 
   // Kandilli'den son depremleri çek
   Future<List<Deprem>> getKandilliDepremler({int? limit}) async {
-    final url = Uri.parse('$baseUrl/kandilli/live');
+    // Limit parametresini URL'e ekle
+    final limitParam = limit ?? 100;
+    final url = Uri.parse('$baseUrl/kandilli/live?limit=$limitParam');
     _log('Kandilli API isteği başlatılıyor: $url');
     
     try {
@@ -77,7 +79,9 @@ class DepremService {
 
   // AFAD'dan son depremleri çek
   Future<List<Deprem>> getAfadDepremler({int? limit}) async {
-    final url = Uri.parse('$baseUrl/afad/live');
+    // Limit parametresini URL'e ekle
+    final limitParam = limit ?? 100;
+    final url = Uri.parse('$baseUrl/afad/live?limit=$limitParam');
     _log('AFAD API isteği başlatılıyor: $url');
     
     try {

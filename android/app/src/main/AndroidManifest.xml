@@ -1,4 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- İnternet izni -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Bildirim izni (Android 13+) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Arka plan görevleri için -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    
     <application
         android:label="deprem_projesi"
         android:name="${applicationName}"

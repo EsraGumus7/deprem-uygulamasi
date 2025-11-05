@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/deprem_provider.dart';
 import 'screens/deprem_listesi_screen.dart';
+import 'services/bildirim_service.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // Bildirim servisini başlat
+  await BildirimService.initialize();
+  await BildirimService.requestPermission();
+  
   runApp(const MyApp());
 }
 

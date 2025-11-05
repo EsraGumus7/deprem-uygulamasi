@@ -9,6 +9,7 @@ class Deprem {
   final double? enlem;
   final double? boylam;
   final String? enYakinSehir;
+  final DateTime? tarih;
 
   Deprem({
     required this.earthquakeId,
@@ -19,6 +20,7 @@ class Deprem {
     this.enlem,
     this.boylam,
     this.enYakinSehir,
+    this.tarih,
   });
 
   // JSON'dan Deprem objesi oluşturma (Kandilli ve AFAD formatlarını destekler)
@@ -80,6 +82,53 @@ class Deprem {
       }
     }
 
+    // Tarih parse etme (date, date_time, timestamp gibi alanları kontrol et)
+    // API'den gelen tarihler genellikle UTC'dir, local time'a çeviriyoruz
+    DateTime? tarih;
+    if (json['date'] != null) {
+      try {
+        if (json['date'] is String) {
+          // ISO 8601 formatı: "2024-01-15T10:30:00" veya "2024-01-15T10:30:00.000Z"
+          final parsedDate = DateTime.parse(json['date'] as String);
+          // UTC ise local time'a çevir, değilse olduğu gibi bırak
+          tarih = parsedDate.isUtc ? parsedDate.toLocal() : parsedDate;
+        } else if (json['date'] is int) {
+          // Unix timestamp (milisaniye) - UTC olarak parse edip local time'a çevir
+          tarih = DateTime.fromMillisecondsSinceEpoch(json['date'] as int, isUtc: true).toLocal();
+        }
+      } catch (e) {
+        // Parse hatası durumunda null bırak
+        tarih = null;
+      }
+    } else if (json['date_time'] != null) {
+      try {
+        if (json['date_time'] is String) {
+          final parsedDate = DateTime.parse(json['date_time'] as String);
+          tarih = parsedDate.isUtc ? parsedDate.toLocal() : parsedDate;
+        } else if (json['date_time'] is int) {
+          tarih = DateTime.fromMillisecondsSinceEpoch(json['date_time'] as int, isUtc: true).toLocal();
+        }
+      } catch (e) {
+        tarih = null;
+      }
+    } else if (json['timestamp'] != null) {
+      try {
+        if (json['timestamp'] is String) {
+          final parsedDate = DateTime.parse(json['timestamp'] as String);
+          tarih = parsedDate.isUtc ? parsedDate.toLocal() : parsedDate;
+        } else if (json['timestamp'] is int) {
+          // Unix timestamp (saniye veya milisaniye kontrolü)
+          final ts = json['timestamp'] as int;
+          // 10 haneli ise saniye, 13 haneli ise milisaniye
+          tarih = ts > 9999999999 
+              ? DateTime.fromMillisecondsSinceEpoch(ts, isUtc: true).toLocal()
+              : DateTime.fromMillisecondsSinceEpoch(ts * 1000, isUtc: true).toLocal();
+        }
+      } catch (e) {
+        tarih = null;
+      }
+    }
+
     return Deprem(
       earthquakeId: json['earthquake_id']?.toString() ?? 
                     json['eventID']?.toString() ?? 
@@ -91,6 +140,7 @@ class Deprem {
       enlem: enlem,
       boylam: boylam,
       enYakinSehir: enYakinSehir,
+      tarih: tarih,
     );
   }
 }
