@@ -1,16 +1,200 @@
-# deprem_projesi
+# 🌍 Deprem Takip Uygulaması
 
-A new Flutter project.
+Türkiye'deki depremleri gerçek zamanlı takip eden, Flutter ile geliştirilmiş mobil uygulama. Kandilli Rasathanesi ve AFAD verilerini kullanarak kullanıcılara anlık deprem bilgileri sunar.
 
-## Getting Started
+## 📱 Özellikler
 
-This project is a starting point for a Flutter application.
+### 🔄 Gerçek Zamanlı Veri Takibi
+- **Çift Kaynak Desteği**: Kandilli Rasathanesi ve AFAD verilerini aynı anda takip eder
+- **Otomatik Güncelleme**: Periyodik kontrol sistemi ile her 2 dakikada bir otomatik veri güncellemesi
+- **Manuel Yenileme**: Pull-to-refresh özelliği ile anında veri güncelleme
+- **Yeni Deprem Bildirimi**: Yeni depremler eklendiğinde görsel bildirim gösterimi
 
-A few resources to get you started if this is your first Flutter project:
+### 📊 Filtreleme ve Sıralama
+- **Büyüklük Filtresi**: Minimum büyüklük değerine göre filtreleme (0.0 - 8.0)
+- **Sıralama Seçenekleri**:
+  - Büyüklüğe göre (Artan/Azalan)
+  - Tarihe göre (En Yeni/En Eski)
+  - Derinliğe göre (Derinden Sığa/Sığdan Derine)
+- **Dinamik Filtreleme**: Filtreler anlık olarak uygulanır
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 🗺️ Harita Görünümü
+- **İnteraktif Harita**: OpenStreetMap entegrasyonu ile tüm depremlerin harita üzerinde görselleştirilmesi
+- **Renkli Marker'lar**: Deprem büyüklüğüne göre renkli işaretleme sistemi
+  - 🔴 Kırmızı: ≥5.0 büyüklükte
+  - 🟠 Turuncu: ≥4.0 büyüklükte
+  - 🟡 Sarı: ≥3.0 büyüklükte
+  - 🟢 Yeşil: <3.0 büyüklükte
+- **Marker Detayları**: Marker'lara tıklanarak deprem detaylarını görüntüleme
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 🔔 Bildirim Sistemi
+- **Akıllı Bildirimler**: Ayarlanabilir eşik değerine göre otomatik bildirim gönderimi
+- **Özelleştirilebilir Eşik**: 3.0 - 7.0 arası bildirim eşiği ayarlama
+- **Kontrol Aralığı**: 1-10 dakika arası kontrol periyodu ayarlama
+- **Kilitli Ekran Desteği**: Uygulama açıkken kilitli ekranda da bildirim gösterimi
+- **Tekrar Önleme**: Aynı deprem tekrar bildirilmez
+
+### 🎨 Modern UI/UX
+- **Material Design 3**: Modern ve kullanıcı dostu arayüz
+- **Renkli Büyüklük Gösterimi**: Deprem büyüklüğüne göre dinamik renk kodlaması
+- **Responsive Tasarım**: Farklı ekran boyutlarına uyumlu
+- **Yavaş Kaydırma**: Özelleştirilmiş scroll physics ile rahat kaydırma deneyimi
+- **Smooth Animations**: Akıcı geçişler ve animasyonlar
+
+### 📋 Detaylı Deprem Bilgileri
+Her deprem kartında gösterilen bilgiler:
+- Büyüklük (renkli ve ikonlu)
+- Lokasyon bilgisi
+- Derinlik (km)
+- Tarih ve saat
+- En yakın şehir bilgisi
+- Kaynak badge (Kandilli/AFAD)
+
+## 🛠️ Teknolojiler
+
+### Frontend
+- **Flutter**: Cross-platform mobil uygulama geliştirme framework'ü
+- **Dart**: Programlama dili
+
+### State Management
+- **Provider**: State management pattern ile merkezi durum yönetimi
+
+### API & Veri
+- **HTTP**: REST API entegrasyonu
+- **JSON Parsing**: Veri modelleme ve parse işlemleri
+- **SharedPreferences**: Yerel veri saklama (ayarlar)
+
+### Harita
+- **flutter_map**: OpenStreetMap entegrasyonu
+- **latlong2**: Koordinat işlemleri
+
+### Bildirimler
+- **flutter_local_notifications**: Lokal bildirim sistemi
+
+### Diğer
+- **intl**: Tarih ve saat formatlama
+
+## 📁 Proje Yapısı
+
+```
+lib/
+├── main.dart                    # Uygulama giriş noktası
+├── models/                     # Veri modelleri
+│   ├── deprem.dart
+│   ├── deprem_kaynagi.dart
+│   └── siralama_tipi.dart
+├── providers/                  # State management
+│   └── deprem_provider.dart
+├── screens/                    # Ekranlar
+│   ├── deprem_listesi_screen.dart
+│   ├── harita_screen.dart
+│   └── ayarlar_screen.dart
+├── services/                  # Servisler
+│   ├── deprem_service.dart
+│   └── bildirim_service.dart
+└── widgets/                   # Widget'lar
+    └── deprem_card.dart
+```
+
+## 🚀 Kurulum
+
+### Gereksinimler
+- Flutter SDK (3.9.2 veya üzeri)
+- Dart SDK
+- Android Studio / VS Code
+- Android SDK veya iOS SDK
+
+### Adımlar
+
+1. **Repository'yi klonlayın**
+   ```bash
+   git clone https://github.com/EsraGumus7/deprem-uygulamasi.git
+   cd deprem-uygulamasi
+   ```
+
+2. **Bağımlılıkları yükleyin**
+   ```bash
+   flutter pub get
+   ```
+
+3. **Uygulamayı çalıştırın**
+   ```bash
+   flutter run
+   ```
+
+## 📦 Kullanılan Paketler
+
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  http: ^1.1.0
+  provider: ^6.1.1
+  intl: ^0.19.0
+  flutter_map: ^7.0.2
+  latlong2: ^0.9.1
+  flutter_local_notifications: ^17.2.3
+  shared_preferences: ^2.3.3
+```
+
+## 🎯 Öne Çıkan Teknik Özellikler
+
+### State Management
+- Provider pattern ile merkezi state yönetimi
+- ChangeNotifier ile reactive UI güncellemeleri
+- Consumer widget'ları ile optimize edilmiş rebuild'ler
+
+### API Entegrasyonu
+- RESTful API ile asenkron veri çekme
+- Error handling ve timeout yönetimi
+- JSON parsing ve model mapping
+- Çift kaynak (Kandilli & AFAD) desteği
+
+### Bildirim Sistemi
+- Local notifications ile push bildirimleri
+- Periyodik kontrol ile otomatik bildirim
+- Eşik tabanlı akıllı bildirim sistemi
+- Tekrar önleme mekanizması
+
+### Kullanıcı Deneyimi
+- Otomatik güncelleme sistemi
+- Pull-to-refresh özelliği
+- Filtreleme ve sıralama
+- Harita görünümü
+- Ayarlanabilir parametreler
+
+## 📊 Proje İstatistikleri
+
+- **Toplam Satır**: ~1500+ satır kod
+- **Dosya Sayısı**: 15+ kaynak dosya
+- **Ekran Sayısı**: 3 ana ekran
+- **Servis Sayısı**: 2 servis katmanı
+- **Model Sayısı**: 3 veri modeli
+
+## 🔧 Geliştirme Özellikleri
+
+- **Debug Logging**: Terminal'de detaylı log sistemi
+- **Error Handling**: Kapsamlı hata yönetimi
+- **Code Organization**: Modüler ve sürdürülebilir kod yapısı
+- **Clean Code**: Okunabilir ve bakımı kolay kod
+
+## 📝 Lisans
+
+Bu proje eğitim ve CV amaçlı geliştirilmiştir.
+
+## 👤 Geliştirici
+
+**Esra Gümüş**
+
+- GitHub: [@EsraGumus7](https://github.com/EsraGumus7)
+
+## 🙏 Teşekkürler
+
+- Kandilli Rasathanesi ve AFAD için açık API desteği
+- Flutter topluluğu
+- OpenStreetMap harita servisi
+
+---
+
+⭐ Projeyi beğendiyseniz yıldız vermeyi unutmayın!
