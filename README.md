@@ -1,3 +1,262 @@
+Haklısın 👍
+Aşağıda **tamamını tek bir kod bloğu içinde**, **Markdown yapısı korunarak** İngilizce olarak veriyorum. Direkt kopyalayıp README.md’ye yapıştırabilirsin.
+
+```md
+# 🌍 Earthquake Tracking Application
+
+A Flutter-based mobile application that allows users to track earthquakes in Turkey in real time. It provides instant earthquake information using data from Kandilli Observatory and AFAD.
+
+## 📸 Screenshots
+
+<div align="center">
+  <img src="screenshots/deprem1.jpeg" alt="Earthquake List - Home Screen" width="250"/>
+  <img src="screenshots/deprem2.jpeg" alt="Earthquake Cards" width="250"/>
+  <br/>
+  <img src="screenshots/deprem3.jpeg" alt="Map View" width="250"/>
+  <img src="screenshots/deprem4.jpeg" alt="Settings and Filtering" width="250"/>
+</div>
+
+## 📱 Features
+
+### 🔄 Real-Time Data Tracking
+- **Dual Data Source Support**: Simultaneously tracks data from Kandilli Observatory and AFAD
+- **Automatic Updates**: Automatically refreshes data every 1 minute via a periodic check system (configurable)
+- **Update on App Launch**: Automatically refreshes data when the app is opened or brought to the foreground
+- **Manual Refresh**: Instant data update with pull-to-refresh functionality
+- **New Earthquake Indicator**: Visual notification when new earthquakes are detected
+
+### 📊 Filtering and Sorting
+- **Magnitude Filter**: Filter by minimum magnitude value (0.0 - 8.0)
+- **Sorting Options**:
+  - By magnitude (Ascending / Descending)
+  - By date (Newest / Oldest)
+  - By depth (Deep to Shallow / Shallow to Deep)
+- **Dynamic Filtering**: Filters are applied instantly
+
+### 🗺️ Map View
+- **Interactive Map**: Visualization of all earthquakes on the map using OpenStreetMap integration
+- **Color-Coded Markers**: Marker colors based on earthquake magnitude
+  - 🔴 Red: ≥5.0 magnitude
+  - 🟠 Orange: ≥4.0 magnitude
+  - 🟡 Yellow: ≥3.0 magnitude
+  - 🟢 Green: <3.0 magnitude
+- **Marker Details**: View earthquake details by tapping on markers
+
+### 🔔 Notification System
+- **Smart Notifications**: Automatic notifications based on a configurable threshold
+- **Customizable Threshold**: Set notification threshold between 3.0 and 7.0
+- **Check Interval**: Adjustable control period between 1–10 minutes
+- **Lock Screen Support**: Notifications displayed even when the screen is locked
+- **Duplicate Prevention**: The same earthquake is not notified more than once
+
+### 🎨 Modern UI/UX
+- **Material Design 3**: Modern and user-friendly interface
+- **Dynamic Magnitude Coloring**: Color-coded magnitude display
+- **Responsive Design**: Compatible with different screen sizes
+- **Smooth Scrolling**: Comfortable scrolling experience with custom scroll physics
+- **Smooth Animations**: Fluid transitions and animations
+
+### 📋 Detailed Earthquake Information
+Information displayed on each earthquake card:
+- Magnitude (color-coded and icon-based)
+- Location information
+- Depth (km)
+- Date and time
+- Nearest city information
+- Source badge (Kandilli / AFAD)
+
+## 🛠️ Technologies
+
+### Frontend
+- **Flutter**: Cross-platform mobile application development framework
+- **Dart**: Programming language
+
+### State Management
+- **Provider**: Centralized state management using the Provider pattern
+
+### API & Data
+- **HTTP**: REST API integration
+- **JSON Parsing**: Data modeling and parsing
+- **SharedPreferences**: Local data storage (settings)
+
+### Map
+- **flutter_map**: OpenStreetMap integration
+- **latlong2**: Coordinate calculations
+
+### Notifications
+- **flutter_local_notifications**: Local notification system
+
+### Other
+- **intl**: Date and time formatting
+
+## 📁 Project Structure
+
+```
+
+lib/
+├── main.dart                    # Application entry point
+├── models/                     # Data models
+│   ├── deprem.dart
+│   ├── deprem_kaynagi.dart
+│   └── siralama_tipi.dart
+├── providers/                  # State management
+│   └── deprem_provider.dart
+├── screens/                    # Screens
+│   ├── deprem_listesi_screen.dart
+│   ├── harita_screen.dart
+│   └── ayarlar_screen.dart
+├── services/                  # Services
+│   ├── deprem_service.dart
+│   └── bildirim_service.dart
+└── widgets/                   # Widgets
+└── deprem_card.dart
+
+````
+
+## 🚀 Installation
+
+### Requirements
+- Flutter SDK (3.9.2 or higher)
+- Dart SDK
+- Android Studio / VS Code
+- Android SDK or iOS SDK
+
+### Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/EsraGumus7/deprem-uygulamasi.git
+   cd deprem-uygulamasi
+````
+
+2. **Install dependencies**
+
+   ```bash
+   flutter pub get
+   ```
+
+3. **Run the application**
+
+   ```bash
+   flutter run
+   ```
+
+## 📦 Packages Used
+
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  http: ^1.1.0
+  provider: ^6.1.1
+  intl: ^0.19.0
+  flutter_map: ^7.0.2
+  latlong2: ^0.9.1
+  flutter_local_notifications: ^17.2.3
+  shared_preferences: ^2.3.3
+```
+
+## 🎯 Key Technical Highlights
+
+### State Management
+
+* Centralized state management with Provider pattern
+* Reactive UI updates using ChangeNotifier
+* Optimized rebuilds with Consumer widgets
+
+### API Integration
+
+* Asynchronous data fetching via RESTful APIs
+* Error handling and timeout management
+* JSON parsing and model mapping
+* Dual data source support (Kandilli & AFAD)
+
+### Notification System
+
+* Push notifications using local notifications
+* Automatic notifications with periodic checks
+* Threshold-based smart notification system
+* Duplicate prevention mechanism
+
+### User Experience
+
+* Automatic update system
+* Pull-to-refresh functionality
+* Filtering and sorting
+* Map view
+* Customizable parameters
+
+## 📊 Project Statistics
+
+* **Total Lines**: ~1500+ lines of code
+* **Number of Files**: 15+ source files
+* **Screens**: 3 main screens
+* **Services**: 2 service layers
+* **Models**: 3 data models
+
+## 🔧 Development Features
+
+* **Debug Logging**: Detailed terminal logging system
+* **Error Handling**: Comprehensive error management
+* **Code Organization**: Modular and maintainable codebase
+* **Clean Code**: Readable and easy-to-maintain structure
+
+## 📝 License
+
+This project was developed for educational and CV purposes.
+
+## 👤 Developer
+
+**Esra Gümüş**
+
+* GitHub: [@EsraGumus7](https://github.com/EsraGumus7)
+
+## 🙏 Acknowledgements
+
+* Kandilli Observatory and AFAD for open API support
+* Flutter community
+* OpenStreetMap map service
+
+---
+
+⭐ If you like the project, don’t forget to give it a star!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # 🌍 **Earthquake Tracker App**
 
