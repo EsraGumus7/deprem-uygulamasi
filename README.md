@@ -16,25 +16,25 @@ A mobile application developed with **Flutter** that tracks earthquakes in **Tur
     <tr>
       <td align="center">
         <img src="screenshots/deprem1.jpeg" width="250"/><br/>
-        **[Main Screen]**<br/>
-        <sub>**Real-time** earthquake list with **source badges**</sub>
+        Main Screen<br/>
+        <sub>Real-time earthquake list with source badges</sub>
       </td>
       <td align="center">
         <img src="screenshots/deprem2.jpeg" width="250"/><br/>
-        **[Information Cards]**<br/>
-        <sub>**Detailed magnitude**, **location**, and **depth** info</sub>
+       Map View <br/>
+        <sub>Interactive OpenStreetMap with color-coded markers</sub>
       </td>
     </tr>
     <tr>
       <td align="center">
         <img src="screenshots/deprem3.jpeg" width="250"/><br/>
-        **[Map View]**<br/>
-        <sub>**Interactive OpenStreetMap** with **color-coded markers**</sub>
+       Information Cards <br/>
+        <sub>Detailed magnitude, location, and depth info</sub>
       </td>
       <td align="center">
         <img src="screenshots/deprem4.jpeg" width="250"/><br/>
-        **[Settings]**<br/>
-        <sub>**Custom notification thresholds** and **filters**</sub>
+        Settings<br/>
+        <sub>Custom notification thresholds and filters</sub>
       </td>
     </tr>
   </table>
