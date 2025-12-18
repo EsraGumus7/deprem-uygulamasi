@@ -1,3 +1,176 @@
+🌍 Earthquake Tracking App
+
+A Flutter-based mobile application that allows users to track earthquakes in Turkey in real time.
+The app fetches and combines data from Kandilli Observatory and AFAD, providing up-to-date and reliable earthquake information.
+
+📸 Screenshots
+<div align="center"> <img src="screenshots/deprem1.jpeg" alt="Earthquake List - Home Screen" width="250"/> <img src="screenshots/deprem2.jpeg" alt="Earthquake Cards" width="250"/> <br/> <img src="screenshots/deprem3.jpeg" alt="Map View" width="250"/> <img src="screenshots/deprem4.jpeg" alt="Settings and Filters" width="250"/> </div>
+📱 Features
+🔄 Real-Time Data Tracking
+
+Dual Data Source Support: Simultaneously tracks data from Kandilli Observatory and AFAD
+
+Automatic Updates: Periodic data refresh every 1 minute (configurable)
+
+App Lifecycle Refresh: Automatically updates data when the app is opened or brought to the foreground
+
+Manual Refresh: Pull-to-refresh support for instant updates
+
+New Earthquake Indicator: Visual indication when a new earthquake is detected
+
+📊 Filtering and Sorting
+
+Magnitude Filter: Filter earthquakes by minimum magnitude (0.0 – 8.0)
+
+Sorting Options:
+
+By magnitude (Ascending / Descending)
+
+By date (Newest / Oldest)
+
+By depth (Deep to Shallow / Shallow to Deep)
+
+Dynamic Filtering: Filters are applied instantly without reloading
+
+🗺️ Map View
+
+Interactive Map: Visualizes earthquakes on a map using OpenStreetMap
+
+Color-Coded Markers based on magnitude:
+
+🔴 Red: ≥ 5.0
+
+🟠 Orange: ≥ 4.0
+
+🟡 Yellow: ≥ 3.0
+
+🟢 Green: < 3.0
+
+Marker Details: Tap markers to view detailed earthquake information
+
+🔔 Notification System
+
+Smart Notifications: Automatically notifies users based on configurable magnitude thresholds
+
+Custom Threshold: Adjustable notification threshold between 3.0 – 7.0
+
+Check Interval: Configurable control interval (1–10 minutes)
+
+Lock Screen Support: Notifications are shown even when the device is locked
+
+Duplicate Prevention: The same earthquake is never notified twice
+
+🎨 Modern UI/UX
+
+Material Design 3
+
+Dynamic Color Coding based on earthquake magnitude
+
+Responsive Layout for different screen sizes
+
+Smooth Scrolling with customized scroll physics
+
+Fluid Animations and transitions
+
+📋 Detailed Earthquake Information
+
+Each earthquake card displays:
+
+Magnitude (with color and icon)
+
+Location
+
+Depth (km)
+
+Date and time
+
+Nearest city
+
+Source badge (Kandilli / AFAD)
+
+🛠️ Technologies
+Frontend
+
+Flutter – Cross-platform mobile development framework
+
+Dart – Programming language
+
+State Management
+
+Provider – Centralized state management pattern
+
+API & Data
+
+HTTP – REST API integration
+
+JSON Parsing – Data modeling and parsing
+
+SharedPreferences – Local storage for user settings
+
+Map
+
+flutter_map – OpenStreetMap integration
+
+latlong2 – Coordinate operations
+
+Notifications
+
+flutter_local_notifications – Local notification system
+
+Others
+
+intl – Date and time formatting
+
+📁 Project Structure
+lib/
+├── main.dart
+├── models/
+├── providers/
+├── screens/
+├── services/
+└── widgets/
+
+🚀 Installation
+Requirements
+
+Flutter SDK (3.9.2 or higher)
+
+Dart SDK
+
+Android Studio / VS Code
+
+Android SDK or iOS SDK
+
+Steps
+git clone https://github.com/EsraGumus7/deprem-uygulamasi.git
+cd deprem-uygulamasi
+flutter pub get
+flutter run
+
+🎯 Technical Highlights
+
+Provider-based state management
+
+RESTful API integration with error handling
+
+Dual earthquake data source support
+
+Threshold-based smart notification system
+
+Modular and maintainable project architecture
+
+👤 Developer
+
+Esra Gümüş
+GitHub: @EsraGumus7
+
+
+
+
+
+
+
+
 # 🌍 Deprem Takip Uygulaması
 
 Türkiye'deki depremleri gerçek zamanlı takip eden, Flutter ile geliştirilmiş mobil uygulama. Kandilli Rasathanesi ve AFAD verilerini kullanarak kullanıcılara anlık deprem bilgileri sunar.
